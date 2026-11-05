@@ -1,0 +1,4 @@
+"ore_nome";"Occupati";"Disoccupati";"Ritirati dal lavoro";"Altra condizione";"Totale";"occupati_perc";"periodo_dati";"fonte_dati"
+"Meno di 10 ore";2254;322;590;774;3940;57,2;"anno 2019 (Indagine europea sulla salute, persone di 15 anni e più)";"elaborazione su microdati ISTAT, Indagine europea sulla salute (EHIS) 2019, file ad uso pubblico"
+"Da 10 a 19 ore";835;149;288;328;1600;52,2;"anno 2019 (Indagine europea sulla salute, persone di 15 anni e più)";"elaborazione su microdati ISTAT, Indagine europea sulla salute (EHIS) 2019, file ad uso pubblico"
+"20 ore o più";825;230;691;621;2367;34,9;"anno 2019 (Indagine europea sulla salute, persone di 15 anni e più)";"elaborazione su microdati ISTAT, Indagine europea sulla salute (EHIS) 2019, file ad uso pubblico"

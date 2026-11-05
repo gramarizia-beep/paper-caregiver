@@ -1,0 +1,1 @@
+Qui vanno i microdati ISTAT ad uso pubblico scaricati dal sito ISTAT: AVQ_2022_IT.zip, AVQ_2023_IT.zip, AVQ_2024_IT.zip nella cartella AVQ; EHIS_2019_IT.zip nella cartella EHIS; i confini delle regioni (regioni_italia.geojson) in geo; il file del Casellario dei pensionati in pensioni.

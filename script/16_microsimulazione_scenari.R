@@ -80,7 +80,7 @@ for (p in c(87000, 93000)) {
 mtext("Aventi diritto (persone con tutti i requisiti; soglia ISEE a 25.000 euro, testo approvato dalla Camera)", side = 1, line = 2.6, col = MUTED, cex = 0.95)
 mtext("Con la soglia ISEE a 25.000, l'importo scende al crescere delle domande",
       side = 3, line = 3.8, adj = 0, font = 2, cex = 1.3, col = INK, at = 40000)
-sott <- strwrap(paste0("Euro l'anno a chi ha ISEE fino a 15.000. Fino a circa 75.000 domande il fondo di 251,41 milioni copre il massimo di 4.800 euro; oltre, lo stesso fondo si divide tra pi\u00f9 persone. ",
+sott <- strwrap(paste0("Euro l'anno a chi ha ISEE fino a 15.000. Fino a circa 61.000 domande il fondo di 251,41 milioni copre il massimo di 4.800 euro; oltre, lo stesso fondo si divide tra pi\u00f9 persone. ",
                        "Ogni linea \u00e8 la quota degli aventi diritto che fa domanda; chi ha ISEE tra 15.000 e 25.000 riceve in media la met\u00e0 (quota con ISEE fino a 15.000: 71,6%, relazione tecnica)."), width = 150)
 for (k in seq_along(sott)) mtext(sott[k], side = 3, line = 2.5 - (k - 1) * 1.05, adj = 0, cex = 0.8, col = MUTED, at = 40000)
 fonte <- strwrap(paste0("Fonte: A.C. 2789-A, art. 14; relazione tecnica A.C. 2789, p. 24; AVQ 2024 (557.000 = persone con limitazioni gravi conviventi con un adulto ",

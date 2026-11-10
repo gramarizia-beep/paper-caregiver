@@ -30,6 +30,7 @@ AVQ_RISORSE_SCARSE     <- 557000
 # --- Aspetto comune -------------------------------------------------------------
 # Sul Mac R scrive i PNG con "quartz"; altrove con "cairo" (serve per le lettere accentate).
 TIPO_PNG <- if (Sys.info()[["sysname"]] == "Darwin") "quartz" else "cairo"
+SFONDO <- "#f4f4f1"   # fondo neutro chiaro di tutte le figure del paper, perché il testo risalti (10/11/2026)
 GRIGIO  <- "#4D4D4D"
 ROSSO   <- "#B2182B"
 BLU     <- "#2166AC"
@@ -40,7 +41,7 @@ it <- function(x, dec = 0) format(round(x, dec), big.mark = ".", decimal.mark = 
 dir.create(file.path("output", "grafici"), showWarnings = FALSE, recursive = TRUE)
 apri <- function(nome, larghezza = 10, altezza = 6.4) {
   png(file.path("output", "grafici", paste0(nome, ".png")),
-      width = larghezza, height = altezza, units = "in", res = 240, type = TIPO_PNG)
+      width = larghezza, height = altezza, units = "in", res = 240, type = TIPO_PNG, bg = SFONDO)
   par(family = "sans", mar = c(8.8, 5, 5.5, 1.5), mgp = c(3, 0.6, 0), las = 1,
       cex.axis = 0.85, bty = "n")
 }
@@ -134,7 +135,7 @@ GRIGIO2 <- "#9A9A9A"
 col8   <- c(inps = GRIGIO2, assistiti = GRIGIO, caregiver = BLU, fondo = ROSSO)[tipo]
 
 png(file.path("output", "grafici", "G08_ordini_di_grandezza_platea.png"),
-    width = 10, height = 7.6, units = "in", res = 240, type = TIPO_PNG)
+    width = 10, height = 7.6, units = "in", res = 240, type = TIPO_PNG, bg = SFONDO)
 par(family = "sans", mar = c(7, 18, 5.5, 2), mgp = c(3, 0.6, 0), las = 1, cex.axis = 0.85, bty = "n")
 b <- barplot(rev(valori) / 1000, horiz = TRUE, col = rev(col8), border = NA, xlim = c(0, 2700),
              xaxt = "n", names.arg = rep("", length(valori)), space = 0.45)

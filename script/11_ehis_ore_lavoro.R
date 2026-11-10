@@ -9,6 +9,7 @@ source("script/00_funzioni_comuni.R")
 PERIODO_EHIS <- "anno 2019 (Indagine europea sulla salute, persone di 15 anni e più)"
 FONTE_EHIS   <- "elaborazione su microdati ISTAT, Indagine europea sulla salute (EHIS) 2019, file ad uso pubblico"
 TIPO_PNG <- if (Sys.info()[["sysname"]] == "Darwin") "quartz" else "cairo"   # il Mac non ha cairo
+SFONDO <- "#f4f4f1"   # fondo neutro chiaro di tutte le figure del paper, perché il testo risalti (10/11/2026)
 
 # --- 1. Lettura del file dentro lo zip (come nello script 99) -----------------
 zip_ehis <- "dati/grezzi/EHIS/EHIS_2019_IT.zip"
@@ -41,7 +42,7 @@ rownames(m) <- paste0(T20$ore_nome, "\n(", formatC(T20$Totale, big.mark = ".", f
 quote <- 100 * m / rowSums(m)
 colori <- c("#2166AC", "#92C5DE", "#B2182B", "#BDBDBD")
 
-png("output/grafici/G11_ehis_ore_e_lavoro.png", width = 10, height = 5.8, units = "in", res = 240, type = TIPO_PNG)
+png("output/grafici/G11_ehis_ore_e_lavoro.png", width = 10, height = 5.8, units = "in", res = 240, type = TIPO_PNG, bg = SFONDO)
 par(family = "sans", mar = c(7.5, 11, 6, 1.5), las = 1, bty = "n", cex.axis = 0.85)
 b <- barplot(t(quote), horiz = TRUE, col = colori, border = NA, xlim = c(0, 100),
              xlab = "Quota di chi assiste, per condizione lavorativa (%)", space = 0.5)

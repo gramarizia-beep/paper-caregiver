@@ -25,6 +25,7 @@ source("script/00_funzioni_comuni.R")
 
 ANNI_MAPPA <- 2022:2024
 TIPO_PNG   <- if (Sys.info()[["sysname"]] == "Darwin") "quartz" else "cairo"
+SFONDO <- "#f4f4f1"   # fondo neutro chiaro di tutte le figure del paper, perché il testo risalti (10/11/2026)
 
 # ---- 1. Lettura dei microdati AVQ 2022-2024 (stesse regole dello script 01) ---
 VARIABILI <- list(famiglia = "PROFAM", parentela = "RELPAR", eta_cl = "ETAMi",
@@ -163,7 +164,7 @@ p2 <- ggplot(mappa) +
                          " (Italia: ", it1(italia_invciv), ")")) +
   tema_mappa
 
-png("output/grafici/G09_mappa_platea_potenziale.png", width = 10, height = 8.4, units = "in", res = 240, type = TIPO_PNG)
+png("output/grafici/G09_mappa_platea_potenziale.png", width = 10, height = 8.4, units = "in", res = 240, type = TIPO_PNG, bg = SFONDO)
 grid.newpage()
 grid.text("Dove sta la platea potenziale del contributo: una geografia del Mezzogiorno",
           x = 0.02, y = 0.965, just = "left", gp = gpar(fontsize = 14, fontface = "bold", fontfamily = "sans"))
@@ -174,7 +175,7 @@ print(p1, vp = viewport(x = 0.26, y = 0.615, width = 0.48, height = 0.60))
 print(p2, vp = viewport(x = 0.74, y = 0.615, width = 0.48, height = 0.60))
 # Riquadro "come leggere"
 grid.rect(x = 0.02, y = 0.085, width = 0.96, height = 0.205, just = c("left", "bottom"),
-          gp = gpar(fill = "#F5F5F5", col = NA))
+          gp = gpar(fill = "white", col = NA))   # bianco sul fondo neutro
 grid.text("COME LEGGERE LA MAPPA", x = 0.035, y = 0.275, just = c("left", "top"),
           gp = gpar(fontsize = 8.5, fontface = "bold", fontfamily = "sans", col = "#333333"))
 testo_lettura <- paste0(
@@ -232,8 +233,9 @@ g10 <- ggplot(lungo, aes(x = valore, y = regione_f)) +
         strip.text = element_text(hjust = 0, size = 8.6, face = "bold"),
         plot.title = element_text(face = "bold", size = 13), plot.subtitle = element_text(colour = "#555555", size = 9),
         plot.caption = element_text(hjust = 0, colour = "#555555", size = 7.5, margin = margin(t = 10)),
-        plot.title.position = "plot", plot.caption.position = "plot", axis.text.y = element_text(size = 8.5))
-ggsave("output/grafici/G10_classifica_platea_potenziale.png", g10, width = 10, height = 7.3, units = "in", dpi = 240, bg = "white")
+        plot.title.position = "plot", plot.caption.position = "plot", axis.text.y = element_text(size = 8.5),
+        plot.background = element_rect(fill = SFONDO, colour = NA))   # ggplot2 4 mette il fondo bianco: qui lo stesso fondo neutro delle altre figure
+ggsave("output/grafici/G10_classifica_platea_potenziale.png", g10, width = 10, height = 7.3, units = "in", dpi = 240, bg = SFONDO)
 
 cat("\nSalvati: T19, G09, G10. Il Mezzogiorno ha il", T19_rip[ripartizione == "Mezzogiorno", residenti_pct],
     "% dei residenti e il", T19_rip[ripartizione == "Mezzogiorno", platea_pct], "% della platea potenziale (AVQ).\n")

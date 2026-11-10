@@ -12,6 +12,7 @@ suppressPackageStartupMessages({ library(data.table); library(sf); library(ggplo
 source("script/00_funzioni_comuni.R")
 
 TIPO_PNG <- if (Sys.info()[["sysname"]] == "Darwin") "quartz" else "cairo"   # il Mac non ha cairo
+SFONDO <- "#f4f4f1"   # fondo neutro chiaro di tutte le figure del paper, perché il testo risalti (10/11/2026)
 it1 <- function(x) format(round(x, 1), decimal.mark = ",", nsmall = 1)
 
 # ---- 1. La tabella M01 e i confini ------------------------------------------
@@ -45,7 +46,7 @@ g <- ggplot(mappa) +
         plot.margin = margin(8, 8, 8, 8))
 
 dir.create("output/grafici", showWarnings = FALSE, recursive = TRUE)
-png("output/grafici/G12_mappa_limitazioni_gravi.png", width = 8, height = 8.6, units = "in", res = 240, type = TIPO_PNG)
+png("output/grafici/G12_mappa_limitazioni_gravi.png", width = 8, height = 8.6, units = "in", res = 240, type = TIPO_PNG, bg = SFONDO)
 print(g)
 dev.off()
 cat("Salvato output/grafici/G12_mappa_limitazioni_gravi.png. Italia:", it1(italia), "%\n")
